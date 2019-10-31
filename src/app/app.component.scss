@@ -1,0 +1,40 @@
+.header {
+  display: flex;
+  padding: 15px;
+  color: white;
+  background: #3f51b5;
+  justify-content: center;
+  box-shadow: 0px 3px 5px 0px lightgray;
+}
+
+.main-contianer {
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: row;
+  padding: 15px;
+  align-items: flex-start;
+
+  .left-container,
+  .calculation-container,
+  .right-container {
+    display: inline-block;
+    height: 100%;
+  }
+
+  .left-container {
+    width: 25%;
+  }
+  .calculation-container {
+    width: 50%;
+    margin: 0px 15px;
+  }
+  .right-container {
+    width: 25%;
+  }
+}
+
+::ng-deep {
+  mat-card {
+    margin-bottom: 15px;
+  }
+}

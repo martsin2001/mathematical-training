@@ -1,0 +1,11 @@
+.operators-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .main-operators {
+    button {
+      margin-right: 15px;
+    }
+  }
+}
