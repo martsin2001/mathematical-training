@@ -1,0 +1,39 @@
+<div class="calculation-wrapper">
+  <div class="task-value">
+    <ng-container *ngFor="let entity of generatedNumbers">
+      <span *ngIf="isNumber(entity)">{{ entity }}</span>
+      <fa-icon *ngIf="!isNumber(entity)" [icon]="entity"></fa-icon>
+    </ng-container>
+  </div>
+
+  <form [formGroup]="resultForm">
+    <mat-form-field [floatLabel]="'never'">
+      <input
+        matInput
+        placeholder="Write result.."
+        formControlName="result"
+        autocomplete="off"
+        (keydown.enter)="answer()"
+      />
+      <mat-icon matSuffix class="icon-done" *ngIf="resultStatus === 'correct'"
+        >thumb_up_alt</mat-icon
+      >
+      <mat-icon matSuffix class="icon-fail" *ngIf="resultStatus === 'mistake'"
+        >thumb_down_alt</mat-icon
+      >
+    </mat-form-field>
+  </form>
+
+  <button
+    mat-raised-button
+    color="accent"
+    (click)="answer()"
+    [disabled]="!getResultValue"
+  >
+    Answer
+  </button>
+</div>
+
+<div class="refresh-icon" (click)="initCalculation()">
+  <fa-icon [icon]="refreshIcon"></fa-icon>
+</div>

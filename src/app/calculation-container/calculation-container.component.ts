@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  faPlus,
+  faMinus,
+  faDivide,
+  faSnowflake
+} from '@fortawesome/free-solid-svg-icons';
+import { SelectedAction } from '../core/models/app.interfaces';
 
 @Component({
   selector: 'app-calculation-container',
@@ -6,10 +13,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculation-container.component.scss']
 })
 export class CalculationContainerComponent implements OnInit {
+  @Input() selectedAction: SelectedAction;
+  @Output() changeAction: EventEmitter<SelectedAction> = new EventEmitter();
 
-  constructor() { }
+  faIcons = {
+    faPlus,
+    faMinus,
+    faDivide,
+    faSnowflake
+  };
 
-  ngOnInit() {
+  constructor() {}
+
+  ngOnInit() {}
+
+  selectAction(action: SelectedAction) {
+    this.changeAction.emit(action);
   }
-
 }

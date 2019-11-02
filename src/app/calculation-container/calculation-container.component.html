@@ -1,18 +1,48 @@
 <mat-card>
   <div class="operators-container">
     <div class="main-operators">
-      <button mat-mini-fab>
-        <mat-icon>add</mat-icon>
+      <button
+        mat-mini-fab
+        [color]="selectedAction === 'plus' ? 'accent' : 'primary'"
+        (click)="selectAction('plus')"
+      >
+        <fa-icon [icon]="faIcons.faPlus"></fa-icon>
       </button>
-      <button mat-mini-fab>
-        <mat-icon>remove</mat-icon>
+      <button
+        mat-mini-fab
+        [color]="selectedAction === 'minus' ? 'accent' : 'primary'"
+        (click)="selectAction('minus')"
+      >
+        <fa-icon [icon]="faIcons.faMinus"></fa-icon>
       </button>
-      <button mat-mini-fab>
-        <mat-icon>/</mat-icon>
+      <button
+        mat-mini-fab
+        [color]="selectedAction === 'multiply' ? 'accent' : 'primary'"
+        (click)="selectAction('multiply')"
+      >
+        <fa-icon [icon]="faIcons.faSnowflake"></fa-icon>
       </button>
-      <button mat-mini-fab>
-        <mat-icon>remove</mat-icon>
+      <button
+        mat-mini-fab
+        [color]="selectedAction === 'divide' ? 'accent' : 'primary'"
+        (click)="selectAction('divide')"
+      >
+        <fa-icon [icon]="faIcons.faDivide"></fa-icon>
       </button>
     </div>
+
+    <button
+      mat-raised-button
+      [color]="selectedAction === 'random' ? 'accent' : 'primary'"
+      (click)="selectAction('random')"
+    >
+      Random
+    </button>
   </div>
+</mat-card>
+
+<mat-card>
+  <app-calculation-panel
+    [changeAction]="selectedAction"
+  ></app-calculation-panel>
 </mat-card>
