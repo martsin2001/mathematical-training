@@ -1,0 +1,51 @@
+.calculation-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px 0px;
+  .task-value {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    fa-icon {
+      font-size: 12px;
+      margin: 5px 15px;
+    }
+  }
+}
+
+mat-form-field {
+  width: 200px;
+  margin-bottom: 10px;
+}
+
+.refresh-icon {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  cursor: pointer;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.icon-done {
+  color: rgb(0, 184, 0);
+}
+
+.icon-fail {
+  color: rgb(209, 0, 0);
+}
+
+::ng-deep {
+  .mat-form-field-suffix {
+    width: 24px;
+    height: 18px;
+    mat-icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}

@@ -8,25 +8,35 @@ import { LeftPanelComponent } from './left-panel/left-panel.component';
 import { RightPanelComponent } from './right-panel/right-panel.component';
 import { CalculationContainerComponent } from './calculation-container/calculation-container.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule
+} from '@angular/material';
+import { CalculationPanelComponent } from './calculation-container/calculation-panel/calculation-panel.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     LeftPanelComponent,
     RightPanelComponent,
-    CalculationContainerComponent
+    CalculationContainerComponent,
+    CalculationPanelComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     FontAwesomeModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

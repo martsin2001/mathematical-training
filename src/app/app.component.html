@@ -7,7 +7,10 @@
     <app-left-panel></app-left-panel>
   </div>
   <div class="calculation-container">
-    <app-calculation-container></app-calculation-container>
+    <app-calculation-container
+      [selectedAction]="selectedAction"
+      (changeAction)="changeAction($event)"
+    ></app-calculation-container>
   </div>
   <div class="right-container">
     <app-right-panel></app-right-panel>
