@@ -1,16 +1,17 @@
 import { Action } from '@ngrx/store';
 
-export const enum AppActions {
+export const enum AppTypes {
   loadHistory = '[History] load history',
-  historyLoaded = '[History] history loaded',
   updateHistory = '[History] update history'
 }
 
 export class LoadHistory implements Action {
-  readonly type = AppActions.loadHistory;
+  readonly type = AppTypes.loadHistory;
 }
 
-export class HistoryLoaded implements Action {
-  readonly type = AppActions.historyLoaded;
+export class UpdateHistory implements Action {
+  readonly type = AppTypes.updateHistory;
   constructor(public payload: any) {}
 }
+
+export type AppActions = LoadHistory | UpdateHistory;

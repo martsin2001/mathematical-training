@@ -8,6 +8,18 @@ export interface Action {
   quantityNumbers?: number;
 }
 
+export interface History {
+  startDate: number;
+  endDate: number;
+  history: SubHistory[];
+}
+
+export interface SubHistory {
+  result: string;
+  expectedResult: string;
+  question: any;
+}
+
 export enum SelectedAction {
   plus = 'plus',
   minus = 'minus',
