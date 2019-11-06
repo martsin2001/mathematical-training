@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { SubHistory } from '../core/models/app.models';
 
 export const enum AppTypes {
   loadHistory = '[History] load history',
@@ -11,7 +12,7 @@ export class LoadHistory implements Action {
 
 export class UpdateHistory implements Action {
   readonly type = AppTypes.updateHistory;
-  constructor(public payload: any) {}
+  constructor(public payload: SubHistory) {}
 }
 
 export type AppActions = LoadHistory | UpdateHistory;
