@@ -1,0 +1,34 @@
+.section-container {
+  position: relative;
+  .section-name {
+    padding: 10px 0px;
+  }
+  .controls-container {
+    mat-slider {
+      width: 100%;
+    }
+    .control {
+      position: relative;
+      border: 2px solid #3f51b5;
+      border-radius: 10px;
+      padding: 8px;
+      margin: 10px 0px 20px;
+      .label {
+        padding: 2px 5px;
+        background: white;
+        font-size: 14px;
+        position: absolute;
+        top: -10px;
+        left: 14px;
+        color: #3f51b5;
+        font-weight: bolder;
+      }
+    }
+  }
+}
+
+.button-contianer {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0px 10px !important;
+}

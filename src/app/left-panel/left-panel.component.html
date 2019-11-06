@@ -1,1 +1,68 @@
-<mat-card>Simple card</mat-card>
+<mat-card>
+  <div class="section-container">
+    <div class="section-name">
+      Adjusting number range
+    </div>
+    <div class="controls-container">
+      <div class="control">
+        <span class="label">From</span>
+        <mat-slider
+          color="primary"
+          thumbLabel
+          min="0"
+          max="900"
+          step="100"
+          [disabled]="currentAction === 'random'"
+          (valueChange)="changeRangeState($event, 'from')"
+          [value]="selectedActionState?.numbersRange?.from"
+        ></mat-slider>
+      </div>
+
+      <div class="control">
+        <span class="label">To</span>
+        <mat-slider
+          color="primary"
+          thumbLabel
+          min="0"
+          max="1000"
+          step="100"
+          [disabled]="currentAction === 'random'"
+          (valueChange)="changeRangeState($event, 'to')"
+          [value]="selectedActionState?.numbersRange?.to"
+        ></mat-slider>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-container">
+    <div class="section-name">
+      Adjusting quntity numbers
+    </div>
+    <div class="controls-container">
+      <div class="control">
+        <span class="label">Amount</span>
+        <mat-slider
+          color="primary"
+          thumbLabel
+          min="2"
+          max="5"
+          step="1"
+          [disabled]="currentAction === 'random'"
+          (valueChange)="changeAmountNumbers($event)"
+          [value]="selectedActionState?.quantityNumbers"
+        ></mat-slider>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-contianer">
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="updateCalculation()"
+      [disabled]="currentAction === 'random'"
+    >
+      Update
+    </button>
+  </div>
+</mat-card>
