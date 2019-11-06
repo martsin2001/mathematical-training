@@ -6,28 +6,31 @@ import {
   faSnowflake
 } from '@fortawesome/free-solid-svg-icons';
 import { SelectedAction } from '../models/app.interfaces';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
+  updateCalculation: BehaviorSubject<{ update: boolean }> = new BehaviorSubject(
+    { update: false }
+  );
+
   calculationRequirementsState = {
     plus: {
       selectedAction: true,
       numbersRange: {
         from: 0,
-        to: 100,
-        maxValue: 5000
+        to: 100
       },
       icon: faPlus,
-      quantityNumbers: 3
+      quantityNumbers: 2
     },
     minus: {
       selectedAction: false,
       numbersRange: {
         from: 0,
-        to: 100,
-        maxValue: 5000
+        to: 100
       },
       icon: faMinus,
       quantityNumbers: 2
@@ -36,8 +39,7 @@ export class AppService {
       selectedAction: false,
       numbersRange: {
         from: 0,
-        to: 100,
-        maxValue: 5000
+        to: 100
       },
       icon: faSnowflake,
       quantityNumbers: 2
@@ -46,21 +48,15 @@ export class AppService {
       selectedAction: false,
       numbersRange: {
         from: 0,
-        to: 100,
-        maxValue: 5000
+        to: 100
       },
       icon: faDivide,
       quantityNumbers: 2
     },
     random: {
-      selectedAction: false,
-      numbersRange: {
-        from: 0,
-        to: 100,
-        maxValue: 5000
-      },
-      icon: faSnowflake,
-      quantityNumbers: 2
+      selectedAction: false
+      // icon: faSnowflake,
+      // quantityNumbers: 2
     }
   };
   mainActions: any = Object.keys(this.calculationRequirementsState).filter(
@@ -86,5 +82,14 @@ export class AppService {
     return this.mainActions[
       Math.floor(Math.random() * this.mainActions.length)
     ];
+  }
+
+  get getSelectedAction() {
+    const actions = this.calculationRequirementsState;
+    for (const key in actions) {
+      if (actions.hasOwnProperty(key) && actions[key].selectedAction) {
+        return actions[key];
+      }
+    }
   }
 }
