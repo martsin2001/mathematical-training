@@ -1,8 +1,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AppFacadeService } from '../redux/app.facade';
 import { History } from '../core/models/app.models';
-import { takeUntil, filter, distinctUntilChanged } from 'rxjs/operators';
+import { takeUntil, distinctUntilChanged } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { MatDialog } from '@angular/material';
+import { HistoryDialigComponent } from '../shared/history-dialig/history-dialig.component';
 
 @Component({
   selector: 'app-right-panel',
@@ -14,7 +16,7 @@ export class RightPanelComponent implements OnInit, OnDestroy {
 
   private unsubscribe$: Subject<boolean> = new Subject();
 
-  constructor(private appFacade: AppFacadeService) {}
+  constructor(private appFacade: AppFacadeService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.loadHistory();
@@ -25,6 +27,16 @@ export class RightPanelComponent implements OnInit, OnDestroy {
     this.unsubscribe$.complete();
   }
 
+  openHistoryDialog() {
+    this.dialog.open(HistoryDialigComponent, {
+      width: '70%',
+      height: '500px',
+      maxWidth: '800px',
+      panelClass: 'history-dialog',
+      data: this.currentHistory
+    });
+  }
+
   private loadHistory() {
     this.appFacade.loadHistory$
       .pipe(
@@ -32,7 +44,6 @@ export class RightPanelComponent implements OnInit, OnDestroy {
         takeUntil(this.unsubscribe$)
       )
       .subscribe((history: History) => {
-        console.log(history);
         this.currentHistory = history;
       });
   }

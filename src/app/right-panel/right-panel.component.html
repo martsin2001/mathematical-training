@@ -25,6 +25,8 @@
   </div>
 
   <div class="button-contianer" *ngIf="currentHistory">
-    <button mat-raised-button color="accent">More Info</button>
+    <button mat-raised-button color="accent" (click)="openHistoryDialog()">
+      More Info
+    </button>
   </div>
 </mat-card>

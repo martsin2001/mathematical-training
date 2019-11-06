@@ -15,7 +15,8 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatDividerModule,
-  MatSliderModule
+  MatSliderModule,
+  MatDialogModule
 } from '@angular/material';
 import { CalculationPanelComponent } from './calculation-container/calculation-panel/calculation-panel.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -23,6 +24,7 @@ import { StoreModule } from '@ngrx/store';
 import { AppReducer } from './redux/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { SubHistoryComponent } from './right-panel/sub-history/sub-history.component';
+import { HistoryDialigComponent } from './shared/history-dialig/history-dialig.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { SubHistoryComponent } from './right-panel/sub-history/sub-history.compo
     RightPanelComponent,
     CalculationContainerComponent,
     CalculationPanelComponent,
-    SubHistoryComponent
+    SubHistoryComponent,
+    HistoryDialigComponent
   ],
   imports: [
     BrowserModule,
@@ -46,11 +49,13 @@ import { SubHistoryComponent } from './right-panel/sub-history/sub-history.compo
     MatDividerModule,
     MatInputModule,
     MatSliderModule,
+    MatDialogModule,
     StoreModule.forRoot({}),
     StoreModule.forFeature('app-state', AppReducer),
     StoreDevtoolsModule.instrument()
   ],
   providers: [],
+  entryComponents: [HistoryDialigComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
