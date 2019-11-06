@@ -5,8 +5,8 @@ import {
   faDivide,
   faSnowflake
 } from '@fortawesome/free-solid-svg-icons';
-import { SelectedAction } from '../models/app.interfaces';
 import { BehaviorSubject } from 'rxjs';
+import { SelectedAction, Action } from '../models/app.models';
 
 @Injectable({
   providedIn: 'root'
@@ -55,8 +55,6 @@ export class AppService {
     },
     random: {
       selectedAction: false
-      // icon: faSnowflake,
-      // quantityNumbers: 2
     }
   };
   mainActions: any = Object.keys(this.calculationRequirementsState).filter(
@@ -84,7 +82,7 @@ export class AppService {
     ];
   }
 
-  get getSelectedAction() {
+  get getSelectedAction(): Action {
     const actions = this.calculationRequirementsState;
     for (const key in actions) {
       if (actions.hasOwnProperty(key) && actions[key].selectedAction) {

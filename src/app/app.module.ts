@@ -19,6 +19,10 @@ import {
 } from '@angular/material';
 import { CalculationPanelComponent } from './calculation-container/calculation-panel/calculation-panel.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { AppReducer } from './redux/app.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { SubHistoryComponent } from './right-panel/sub-history/sub-history.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     LeftPanelComponent,
     RightPanelComponent,
     CalculationContainerComponent,
-    CalculationPanelComponent
+    CalculationPanelComponent,
+    SubHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +45,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatDividerModule,
     MatInputModule,
-    MatSliderModule
+    MatSliderModule,
+    StoreModule.forRoot({}),
+    StoreModule.forFeature('app-state', AppReducer),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]

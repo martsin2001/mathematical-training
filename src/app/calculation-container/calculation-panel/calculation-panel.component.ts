@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { SelectedAction } from 'src/app/core/models/app.interfaces';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 import { AppService } from 'src/app/core/services/app.service';
+import { SelectedAction } from 'src/app/core/models/app.models';
 
 enum ResultStatus {
   correct = 'correct',
