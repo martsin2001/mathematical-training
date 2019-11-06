@@ -1,1 +1,31 @@
-<p>sub-history works!</p>
+<div class="sub-history-container">
+  <div class="section">
+    <div class="key">Question:</div>
+    <div class="value">
+      <ng-container *ngFor="let number of subHistory.question; let last = last">
+        {{ number }}
+        <fa-icon [icon]="subHistory.action" *ngIf="!last"></fa-icon>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="key">Expected Result:</div>
+    <div class="value">
+      {{ subHistory.expectedResult }}
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="key">Result:</div>
+    <div
+      class="value"
+      [ngClass]="{
+        'color-green': subHistory.result === subHistory.expectedResult,
+        'color-red': subHistory.result !== subHistory.expectedResult
+      }"
+    >
+      {{ subHistory.result }}
+    </div>
+  </div>
+</div>

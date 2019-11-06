@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { faSync } from '@fortawesome/free-solid-svg-icons';
 import { AppService } from 'src/app/core/services/app.service';
-import { SelectedAction } from 'src/app/core/models/app.models';
+import { SelectedAction, SubHistory } from 'src/app/core/models/app.models';
 
 enum ResultStatus {
   correct = 'correct',
@@ -18,6 +18,7 @@ export class CalculationPanelComponent implements OnInit {
   @Input() set changeAction(action: SelectedAction) {
     this.setSelectedAction(action);
   }
+  @Output() updateHistory: EventEmitter<SubHistory> = new EventEmitter();
 
   refreshIcon = faSync;
   resultForm: FormGroup;
@@ -70,6 +71,7 @@ export class CalculationPanelComponent implements OnInit {
     } else {
       this.resultStatus = ResultStatus.mistake;
     }
+    this.updateCurrentHistory();
     setTimeout(() => {
       this.resetState();
     }, 1000);
@@ -83,6 +85,15 @@ export class CalculationPanelComponent implements OnInit {
     this.resultStatus = null;
     this.resultForm.reset();
     this.initCalculation();
+  }
+
+  private updateCurrentHistory() {
+    this.updateHistory.emit({
+      result: this.resultForm.value.result,
+      action: this.selectedActionState.icon,
+      expectedResult: this.expectedResult.toString(),
+      question: this.generatedNumbers.filter(value => typeof value === 'number')
+    } as SubHistory);
   }
 
   private subscribeToUpdateCalculation() {

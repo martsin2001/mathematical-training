@@ -5,14 +5,26 @@
   </div>
 
   <div class="sub-histories-container" *ngIf="currentHistory">
-    <ng-container *ngFor="let subHistory of currentHistory; let i = index">
-      <ng-container *ngIf="i < 5">
-        <app-sub-history></app-sub-history>
+    <ng-container
+      *ngFor="let subHistory of currentHistory.history; let i = index"
+    >
+      <ng-container *ngIf="i < 3">
+        <app-sub-history [subHistory]="subHistory"></app-sub-history>
+      </ng-container>
+
+      <ng-container *ngIf="i >= 3">
+        <div class="more-icon-contianer">
+          <mat-icon>more_horiz</mat-icon>
+        </div>
       </ng-container>
     </ng-container>
   </div>
 
   <div class="history-placeholder" *ngIf="!currentHistory">
     Your history will start, when you type any answer.
+  </div>
+
+  <div class="button-contianer" *ngIf="currentHistory">
+    <button mat-raised-button color="accent">More Info</button>
   </div>
 </mat-card>

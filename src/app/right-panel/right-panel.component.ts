@@ -29,10 +29,10 @@ export class RightPanelComponent implements OnInit, OnDestroy {
     this.appFacade.loadHistory$
       .pipe(
         distinctUntilChanged(),
-        filter(history => !!history),
         takeUntil(this.unsubscribe$)
       )
       .subscribe((history: History) => {
+        console.log(history);
         this.currentHistory = history;
       });
   }

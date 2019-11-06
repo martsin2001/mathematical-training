@@ -44,5 +44,6 @@
 <mat-card>
   <app-calculation-panel
     [changeAction]="selectedAction"
+    (updateHistory)="updateHistory($event)"
   ></app-calculation-panel>
 </mat-card>
