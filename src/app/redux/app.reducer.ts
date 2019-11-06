@@ -1,5 +1,6 @@
 import { AppActions, AppTypes } from './app.actions';
 import { createFeatureSelector } from '@ngrx/store';
+import { History } from '../core/models/app.models';
 
 const initialState: AppState = {
   history: null

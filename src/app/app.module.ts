@@ -22,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { AppReducer } from './redux/app.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { SubHistoryComponent } from './right-panel/sub-history/sub-history.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     LeftPanelComponent,
     RightPanelComponent,
     CalculationContainerComponent,
-    CalculationPanelComponent
+    CalculationPanelComponent,
+    SubHistoryComponent
   ],
   imports: [
     BrowserModule,
