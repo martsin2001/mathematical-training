@@ -5,7 +5,7 @@ import {
   faDivide,
   faSnowflake
 } from '@fortawesome/free-solid-svg-icons';
-import { SelectedAction } from '../core/models/app.interfaces';
+import { SelectedAction } from '../core/models/app.models';
 
 @Component({
   selector: 'app-calculation-container',

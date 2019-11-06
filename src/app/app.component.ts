@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectedAction } from './core/models/app.interfaces';
+import { SelectedAction } from './core/models/app.models';
 import { AppService } from './core/services/app.service';
 
 @Component({

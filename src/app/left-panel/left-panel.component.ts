@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AppService } from '../core/services/app.service';
-import { SelectedAction } from '../core/models/app.interfaces';
+import { SelectedAction } from '../core/models/app.models';
 
 @Component({
   selector: 'app-left-panel',

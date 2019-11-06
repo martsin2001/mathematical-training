@@ -1,1 +1,18 @@
-<mat-card>Simple card</mat-card>
+<mat-card>
+  <div class="right-panel-title">
+    View history
+    <mat-icon>history</mat-icon>
+  </div>
+
+  <div class="sub-histories-container" *ngIf="currentHistory">
+    <ng-container *ngFor="let subHistory of currentHistory; let i = index">
+      <ng-container *ngIf="i < 5">
+        <app-sub-history></app-sub-history>
+      </ng-container>
+    </ng-container>
+  </div>
+
+  <div class="history-placeholder" *ngIf="!currentHistory">
+    Your history will start, when you type any answer.
+  </div>
+</mat-card>
