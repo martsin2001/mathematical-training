@@ -5,7 +5,7 @@ import {
   faDivide,
   faSnowflake
 } from '@fortawesome/free-solid-svg-icons';
-import { SelectedAction } from '../models/app.interfaces';
+import { SelectedAction } from '../models/app.models';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
