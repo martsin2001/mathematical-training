@@ -9,15 +9,16 @@ export interface Action {
 }
 
 export interface History {
-  startDate: number;
-  endDate: number;
+  startDate: Date;
+  endDate: Date;
   history: SubHistory[];
 }
 
 export interface SubHistory {
   result: string;
   expectedResult: string;
-  question: any;
+  question: number[];
+  action: any;
 }
 
 export enum SelectedAction {

@@ -14,3 +14,21 @@
   color: gray;
   font-style: oblique;
 }
+
+.more-icon-contianer {
+  display: flex;
+  justify-content: center;
+  padding: 30px 0px 0px;
+  font-size: 30px;
+  mat-icon {
+    font-size: 30px;
+    width: auto !important;
+    height: auto !important;
+  }
+}
+
+.button-contianer {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0px;
+}

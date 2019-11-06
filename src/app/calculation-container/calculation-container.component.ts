@@ -5,7 +5,8 @@ import {
   faDivide,
   faSnowflake
 } from '@fortawesome/free-solid-svg-icons';
-import { SelectedAction } from '../core/models/app.models';
+import { SelectedAction, SubHistory } from '../core/models/app.models';
+import { AppFacadeService } from '../redux/app.facade';
 
 @Component({
   selector: 'app-calculation-container',
@@ -23,11 +24,15 @@ export class CalculationContainerComponent implements OnInit {
     faSnowflake
   };
 
-  constructor() {}
+  constructor(private appFacade: AppFacadeService) {}
 
   ngOnInit() {}
 
   selectAction(action: SelectedAction) {
     this.changeAction.emit(action);
+  }
+
+  updateHistory(payload: SubHistory) {
+    this.appFacade.updateHistory(payload);
   }
 }
