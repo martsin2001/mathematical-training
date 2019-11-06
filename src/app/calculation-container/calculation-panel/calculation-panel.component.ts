@@ -33,6 +33,7 @@ export class CalculationPanelComponent implements OnInit {
 
   ngOnInit() {
     this.initResultForm();
+    this.subscribeToUpdateCalculation();
   }
 
   isNumber(element: any) {
@@ -41,7 +42,7 @@ export class CalculationPanelComponent implements OnInit {
 
   initCalculation() {
     this.defineAndSetAction();
-    this.selectedActionState = this.getSelectedCalculation;
+    this.selectedActionState = this.appService.getSelectedAction;
     const randomNumbers = Array(this.selectedActionState.quantityNumbers)
       .fill(0)
       .map(() =>
@@ -84,6 +85,14 @@ export class CalculationPanelComponent implements OnInit {
     this.initCalculation();
   }
 
+  private subscribeToUpdateCalculation() {
+    this.appService.updateCalculation.subscribe(({ update }) => {
+      if (update) {
+        this.initCalculation();
+      }
+    });
+  }
+
   private defineAndSetAction() {
     if (this.currentAction !== 'random') {
       return;
@@ -123,19 +132,6 @@ export class CalculationPanelComponent implements OnInit {
   }
 
   private generateRandomNumber(from: number, to: number) {
-    return Math.abs(Math.floor(Math.random() * to) - from);
-  }
-
-  private get getSelectedCalculation() {
-    const calculationRequirementsState = this.appService
-      .calculationRequirementsState;
-    for (const key in calculationRequirementsState) {
-      if (
-        calculationRequirementsState.hasOwnProperty(key) &&
-        calculationRequirementsState[key].selectedAction
-      ) {
-        return calculationRequirementsState[key];
-      }
-    }
+    return Math.abs(Math.floor(Math.random() * (to - from)) + from);
   }
 }

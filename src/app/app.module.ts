@@ -13,7 +13,9 @@ import {
   MatCardModule,
   MatIconModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatDividerModule,
+  MatSliderModule
 } from '@angular/material';
 import { CalculationPanelComponent } from './calculation-container/calculation-panel/calculation-panel.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -36,7 +38,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatDividerModule,
+    MatInputModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
