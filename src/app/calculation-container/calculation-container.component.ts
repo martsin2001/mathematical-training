@@ -28,8 +28,8 @@ export class CalculationContainerComponent implements OnInit {
 
   ngOnInit() {}
 
-  selectAction(action: SelectedAction) {
-    this.changeAction.emit(action);
+  selectAction(action: SelectedAction | string) {
+    this.changeAction.emit(action as SelectedAction);
   }
 
   updateHistory(payload: SubHistory) {
